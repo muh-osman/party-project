@@ -1,0 +1,30 @@
+@use "../../sass" as *;
+
+.main {
+  // height: calc(100vh - 140px);
+  height: 667px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+
+   img {
+    width: 100%;
+    // height: 100%;
+   }
+
+   a {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 50px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    border-radius: 55px;
+    font-size: 26px;
+    font-weight: 600;
+   }
+}

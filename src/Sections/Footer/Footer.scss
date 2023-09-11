@@ -1,0 +1,11 @@
+@use "../../sass" as *;
+
+footer {
+  background-color: #B46060;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+}

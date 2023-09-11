@@ -1,0 +1,6 @@
+@use "../../sass" as *;
+
+.about {
+  background-color: $secondary-clr;
+  height: calc(100vh - 140px);
+}
