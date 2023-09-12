@@ -1,7 +1,7 @@
 import css from "./Admin.module.scss";
 // Icons
-import scanIcon from "../../assets/images/qrcode-solid.svg"
-import dashboardIcon from "../../assets/images/chart-line-solid.svg"
+import scanIcon from "../../assets/images/scan.webp";
+import dashboardIcon from "../../assets/images/dashboard.svg";
 // Mui
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -13,7 +13,7 @@ export default function Admin() {
   return (
     <article className={css.container}>
       {/* Scan */}
-      <Card sx={{ width: 200, height: 200, padding: 1 }}>
+      <Card sx={{ width: 200, padding: 1 }}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -26,7 +26,7 @@ export default function Admin() {
               gutterBottom
               variant="h5"
               component="div"
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "center", margin: 0 }}
             >
               Scan
             </Typography>
@@ -35,7 +35,7 @@ export default function Admin() {
       </Card>
 
       {/* Dashboard */}
-      <Card sx={{ width: 200, height: 200 }}>
+      <Card sx={{ width: 200, padding: 1 }}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -48,7 +48,7 @@ export default function Admin() {
               gutterBottom
               variant="h5"
               component="div"
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "center", margin: 0 }}
             >
               Dashboard
             </Typography>
