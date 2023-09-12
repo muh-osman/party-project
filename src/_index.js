@@ -6,6 +6,8 @@ export { default as Footer } from "./Sections/Footer/Footer";
 export { default as Home } from "./Pages/Home/Home";
 export { default as About } from "./Pages/About/About";
 export { default as SignUp } from "./Pages/SignUp/SignUp";
+export { default as LogIn } from "./Pages/LogIn/LogIn";
+export { default as Admin } from "./Pages/Admin/Admin";
 // Layout
 export { default as Layout } from "./Layout/Layout";
 

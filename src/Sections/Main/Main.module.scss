@@ -1,23 +1,31 @@
 @use "../../sass" as *;
 
 .main {
-  // height: calc(100vh - 140px);
   height: 667px;
   width: 100%;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../assets/images/party.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-
-   img {
-    width: 100%;
-    // height: 100%;
-   }
-
-   a {
+  h1 {
+    color: #fff;
     position: absolute;
-    left: 50%;
+    top: 25%;
+    font-size: 55px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  a {
+    position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%);
     padding: 20px 50px;
     background-color: #fff;
     color: #000;
@@ -25,6 +33,21 @@
     cursor: pointer;
     border-radius: 55px;
     font-size: 26px;
-    font-weight: 600;
-   }
+    font-weight: 700;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .main {
+    h1 {
+      font-size: 45px;
+      font-weight: 700;
+    }
+  }
 }
