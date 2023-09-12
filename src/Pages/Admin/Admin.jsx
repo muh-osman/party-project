@@ -1,3 +1,6 @@
+// React router
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+// Sass
 import css from "./Admin.module.scss";
 // Icons
 import scanIcon from "../../assets/images/scan.webp";
@@ -14,7 +17,7 @@ export default function Admin() {
     <article className={css.container}>
       {/* Scan */}
       <Card sx={{ width: 200, padding: 1 }}>
-        <CardActionArea>
+        <CardActionArea component={RouterLink} to="/scan">
           <CardMedia
             component="img"
             height="140"
@@ -36,7 +39,7 @@ export default function Admin() {
 
       {/* Dashboard */}
       <Card sx={{ width: 200, padding: 1 }}>
-        <CardActionArea>
+        <CardActionArea component={RouterLink} to="/dashboard">
           <CardMedia
             component="img"
             height="140"
