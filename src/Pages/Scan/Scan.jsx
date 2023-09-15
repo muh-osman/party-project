@@ -24,7 +24,7 @@ export default function Scan() {
             }
           }}
           style={{ width: "100%", height: "100%" }}
-          constraints={{ facingMode: "back" }}
+          constraints={{ facingMode: "environment" }}
         />
         <p>{scanResult}</p>
       </div>
