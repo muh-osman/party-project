@@ -7,7 +7,7 @@ export default function Main() {
   return (
     <div className={css.main}>
       <h1>Best event ever!</h1>
-      <Link to="signup">Sign up now</Link>
+      <Link to="signup">Join us now</Link>
     </div>
   );
 }

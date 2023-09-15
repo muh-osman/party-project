@@ -48,8 +48,12 @@ export default function SignUp() {
       // console.log(response);
 
       // Flip the form
-      document.querySelector(`.${css.flip_card_inner}`).style.transform =
-        "rotateY(180deg)";
+
+      setTimeout(() => {
+        document.querySelector(`.${css.flip_card_inner}`).style.transform =
+          "rotateY(180deg)";
+      }, 3000);
+      
     } catch (error) {
       setLoading(false);
       setAlertMsg(error.message);
@@ -75,7 +79,7 @@ export default function SignUp() {
             variant="h5"
             sx={{ color: "#222", fontSize: "48px", fontWeight: 800 }}
           >
-            Sign up
+            Join us
           </Typography>
 
           {/* Alert if Exist */}
@@ -125,8 +129,8 @@ export default function SignUp() {
                   sx={{
                     mt: 3,
                     mb: 2,
-                    height: "36.5px",
                     transition: "0.1s",
+                    height: "56px",
                   }}
                 >
                   Sign Up

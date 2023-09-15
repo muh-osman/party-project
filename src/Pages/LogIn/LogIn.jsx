@@ -113,7 +113,7 @@ export default function LogIn() {
               variant="contained"
               disableRipple
               loading={loading}
-              sx={{ mt: 3, mb: 1, height: "36.5px", transition: "0.1s" }}
+              sx={{ mt: 3, mb: 1, height: "56px", transition: "0.1s" }}
             >
               Log in
             </LoadingButton>
