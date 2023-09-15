@@ -7,6 +7,17 @@ import css from "./Scan.module.scss";
 
 export default function Scan() {
   const [scanResult, setScanResult] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (scanResult) {
+      const parts = scanResult.split(/name:|email:/);
+      setName(parts[1]?.trim());
+      setEmail(parts[2]?.trim());
+    }
+    console.log(scanResult);
+  }, [scanResult]);
 
   return (
     <div className={css.container}>
@@ -26,7 +37,7 @@ export default function Scan() {
           style={{ width: "100%", height: "100%" }}
           constraints={{ facingMode: "environment" }}
         />
-        <p>{scanResult}</p>
+        <pre>{scanResult && scanResult}</pre>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 //React router
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 // Pages & Components
-import { Home, Layout, About, SignUp, LogIn, Admin, Scan, Dashboard } from "./_index";
+import { Home, Layout, About, SignUp, LogIn, Admin, Scan, Dashboard, ProtectedRoutes } from "./_index";
 
 
 
@@ -15,9 +15,12 @@ export default function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="login" element={<LogIn />} />
 
-          <Route path="admin" element={<Admin />} />
-          <Route path="scan" element={<Scan />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          {/*  Protected Routes  */}
+          <Route element={< ProtectedRoutes />}>
+              <Route path="admin" element={<Admin />} />
+              <Route path="scan" element={<Scan />} />
+              <Route path="dashboard" element={<Dashboard />} />
+          </Route>
       </Route>
     )
   );

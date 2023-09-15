@@ -12,4 +12,5 @@ export { default as Scan } from "./Pages/Scan/Scan";
 export { default as Dashboard } from "./Pages/Dashboard/Dashboard";
 // Layout
 export { default as Layout } from "./Layout/Layout";
+export { default as ProtectedRoutes } from "./Layout/ProtectedRoutes";
 
