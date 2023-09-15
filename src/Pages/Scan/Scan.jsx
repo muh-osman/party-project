@@ -1,5 +1,4 @@
 // QR Code npm
-// import { Html5QrcodeScanner, Html5Qrcode } from "html5-qrcode";
 import { QrReader } from "react-qr-reader";
 // React
 import { useState, useEffect } from "react";
@@ -18,7 +17,6 @@ export default function Scan() {
           onResult={(result, error) => {
             if (!!result) {
               setScanResult(result?.text);
-              
             }
 
             if (!!error) {
@@ -26,6 +24,7 @@ export default function Scan() {
             }
           }}
           style={{ width: "100%", height: "100%" }}
+          constraints={{ facingMode: "back" }}
         />
         <p>{scanResult}</p>
       </div>
