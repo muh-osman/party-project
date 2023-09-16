@@ -102,7 +102,6 @@ export default function SignUp() {
                       type="text"
                       name="name"
                       label="Name"
-                      autoFocus
                     />
                   </Grid>
 

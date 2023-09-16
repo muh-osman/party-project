@@ -90,7 +90,6 @@ export default function LogIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
             />
             <TextField
               margin="normal"
