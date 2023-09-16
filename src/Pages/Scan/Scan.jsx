@@ -36,7 +36,7 @@ export default function Scan() {
       <div className={css.qr_box}>
         <QrReader
           onResult={(result, error) => {
-            if (!!result && result !== scanResult) {
+            if (!!result && result.text !== scanResult) {
               qrScanSoundEffect.play();
               setScanResult(result?.text);
               postUser()
