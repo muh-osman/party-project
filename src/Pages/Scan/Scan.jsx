@@ -1,11 +1,13 @@
 // QR Code npm
 import { QrReader } from "react-qr-reader";
 // React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Scss
 import css from "./Scan.module.scss";
 // Axios
 import axios from "axios";
+// MUI
+import LoadingButton from "@mui/lab/LoadingButton";
 
 export default function Scan() {
   // qr Scan Sound Effect
@@ -14,20 +16,35 @@ export default function Scan() {
   );
 
   const [scanResult, setScanResult] = useState(null);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
+  const [lastScanResult, setLastScanResult] = useState(null);
+  const [loadding, setLoadding] = useState(false);
 
   const postUser = async () => {
     try {
+      qrScanSoundEffect.play();
+      setLastScanResult(scanResult);
+      setLoadding(true);
+
       // const response = await axios.post("/user?ID=12345", {
       //   qrData: scanResult,
       // });
       // console.log(response);
 
+      setTimeout(() => {
+        setLoadding(false);
+      }, 3000);
     } catch (err) {
       console.log(err);
-      setError(err)
+      setError(err);
     }
   };
+
+  useEffect(() => {
+    if (scanResult && scanResult !== lastScanResult) {
+      postUser();
+    }
+  }, [scanResult, lastScanResult]);
 
   return (
     <div className={css.container}>
@@ -36,12 +53,9 @@ export default function Scan() {
       <div className={css.qr_box}>
         <QrReader
           onResult={(result, error) => {
-            if (!!result && result.text !== scanResult) {
-              qrScanSoundEffect.play();
+            if (!!result) {
               setScanResult(result?.text);
-              postUser()
             }
-
             if (!!error) {
               console.info(error);
             }
@@ -50,7 +64,14 @@ export default function Scan() {
           constraints={{ facingMode: "environment" }}
         />
         <pre>{scanResult && scanResult}</pre>
-        <h1>{error && error}</h1>
+        {/* Fetch error */}
+        <h1>
+          {error ? (
+            error
+          ) : loadding ? (
+            <LoadingButton loading></LoadingButton>
+          ) : null}
+        </h1>
       </div>
     </div>
   );
