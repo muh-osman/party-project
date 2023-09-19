@@ -17,7 +17,7 @@ export default function Admin() {
     <article className={css.container}>
       {/* Scan */}
       <Card sx={{ width: 200, padding: 1 }}>
-        <CardActionArea component={RouterLink} to="/scan">
+        <CardActionArea component={RouterLink} to="scan">
           <CardMedia
             component="img"
             height="140"
@@ -39,7 +39,7 @@ export default function Admin() {
 
       {/* Dashboard */}
       <Card sx={{ width: 200, padding: 1 }}>
-        <CardActionArea component={RouterLink} to="/dashboard">
+        <CardActionArea component={RouterLink} to="dashboard">
           <CardMedia
             component="img"
             height="140"

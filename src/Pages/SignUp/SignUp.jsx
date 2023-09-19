@@ -132,7 +132,7 @@ export default function SignUp() {
                     height: "56px",
                   }}
                 >
-                  Sign Up
+                  Join us
                 </LoadingButton>
 
                 <Grid container justifyContent="flex-end">

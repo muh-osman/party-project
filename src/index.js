@@ -4,9 +4,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // Sass file
 import "./sass/normalize.scss";
-// Bootstrap
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.min.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

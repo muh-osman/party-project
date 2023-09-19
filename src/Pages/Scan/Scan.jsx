@@ -31,9 +31,11 @@ export default function Scan() {
       // });
       // console.log(response);
 
+      // Remove setTimeout in production
       setTimeout(() => {
         setLoadding(false);
       }, 3000);
+
     } catch (err) {
       console.log(err);
       setError(err);

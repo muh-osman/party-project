@@ -10,7 +10,9 @@ export { default as LogIn } from "./Pages/LogIn/LogIn";
 export { default as Admin } from "./Pages/Admin/Admin";
 export { default as Scan } from "./Pages/Scan/Scan";
 export { default as Dashboard } from "./Pages/Dashboard/Dashboard";
+export { default as Statistics } from "./Pages/Statistics/Statistics";
 // Layout
 export { default as Layout } from "./Layout/Layout";
 export { default as ProtectedRoutes } from "./Layout/ProtectedRoutes";
-
+export { default as AdminLayout } from "./Layout/AdminLayout";
+export { default as DashboardLayout } from "./Layout/DashboardLayout";

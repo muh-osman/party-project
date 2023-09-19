@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
-import "./Header.scss"
+import css from "./Header.module.scss"
 
 export default function Header() {
   return (
-    <header>
+    <header className={css.header}>
         <nav>
             <ul>
                 <li><Link to="/">Home</Link></li>

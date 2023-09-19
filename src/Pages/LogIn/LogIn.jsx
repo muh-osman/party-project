@@ -47,8 +47,9 @@ export default function LogIn() {
       // });
       // console.log(response);
 
+      // ! Remove "setTimeout" in production
       setTimeout(() => {
-        navigate("/admin");
+        navigate("/admin", { replace: true });
       }, 3000);
 
       console.log(email, password);
