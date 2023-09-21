@@ -31,6 +31,8 @@ export default function BasicTable() {
           minWidth: 650,
           "& .MuiTableRow-root:hover": {
             backgroundColor: "#F6F6F6",
+            whiteSpace: "nowrap"
+
           },
         }}
         aria-label="simple table"
