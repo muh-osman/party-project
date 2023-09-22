@@ -1,7 +1,7 @@
 // React
 import * as React from "react";
 // React router
-import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
+import { Link, useLocation, Outlet } from "react-router-dom";
 // MUI
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -19,15 +19,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
-import { Avatar, Stack } from "@mui/material";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Stack } from "@mui/material";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 
  const drawerWidth = 240;
 
 
 function DashboardLayout(props) {
-  const navigate = useNavigate()
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -43,9 +42,9 @@ function DashboardLayout(props) {
             <Toolbar style={{ justifyContent: "center" }}>
         <Link to="../" style={{ textDecoration: "none", color: "#fff" }}>
           <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
-          <ArrowBackIcon sx={{color: "#2486F0"}} />
+          <ArrowBackIosIcon sx={{color: "#2486F0", fontSize: "medium"}} />
             <Typography
-              style={{ textAlign: "center", justifyContent: "center", fontSize: "16px", color: "#2486F0" }}
+              style={{ textAlign: "center", justifyContent: "center", fontSize: "16px", color: "#2486F0", margin: 0 }}
               align="center"
               variant="h4"
               noWrap
@@ -105,7 +104,7 @@ function DashboardLayout(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-              Party event
+              Party Event
           </Typography>
         </Toolbar>
       </AppBar>

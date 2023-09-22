@@ -6,7 +6,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Badge from "@mui/material/Badge";
 
 function createData(name, email, date, isAttended) {
   return { name, email, date, isAttended };
@@ -19,6 +18,10 @@ const rows = [
   createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
   createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
   createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
+  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
+  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
+  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
+  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
   createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
   createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
 ];

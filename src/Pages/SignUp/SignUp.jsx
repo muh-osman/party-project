@@ -1,12 +1,11 @@
 // React router
-import { useState, useEffect, useRef } from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 // Sass
 import css from "./SignUp.module.scss";
 // Axios
 import axios from "axios";
 // MUI
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
