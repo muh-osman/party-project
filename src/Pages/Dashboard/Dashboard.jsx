@@ -1,3 +1,8 @@
+// React
+import { useState, useEffect } from "react";
+// Axios
+import axios from "axios";
+// MUI
 import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -6,27 +11,49 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+// Cookies
+import { useCookies } from "react-cookie";
 
-function createData(name, email, date, isAttended) {
-  return { name, email, date, isAttended };
-}
 
-const rows = [
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", true),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-  createData("John Doe", "johndoe@gmail.com", "14/8/2025", false),
-];
 
 export default function BasicTable() {
+  const [cookies] = useCookies(["token"]);
+  const [data, setData] = useState([]);
+
+  async function fetchData() {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/guests", {
+        headers: {
+          Authorization: `Bearer ${cookies.token}`,
+        },
+      });
+      console.log(response);
+      setData(response.data.guests);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const guests = data.map((guest) => (
+    <TableRow
+      key={guest.id}
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    >
+      <TableCell component="th" scope="row">
+        {guest.name}
+      </TableCell>
+      <TableCell>{guest.email}</TableCell>
+      <TableCell>{guest.created_at}</TableCell>
+      <TableCell sx={{ color: guest.attendanceStatus ? "#36A2EB" : "#FF6384" }}>
+        {guest.attendanceStatus ? "Attended" : "Not Attend"}
+      </TableCell>
+    </TableRow>
+  ));
+
   return (
     <TableContainer component={Paper}>
       <Table
@@ -34,8 +61,7 @@ export default function BasicTable() {
           minWidth: 650,
           "& .MuiTableRow-root:hover": {
             backgroundColor: "#F6F6F6",
-            whiteSpace: "nowrap"
-
+            whiteSpace: "nowrap",
           },
         }}
         aria-label="simple table"
@@ -49,17 +75,9 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.email}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">{row.name}</TableCell>
-              <TableCell>{row.email}</TableCell>
-              <TableCell>{row.date}</TableCell>
-              <TableCell sx={{color: row.isAttended? "#36A2EB" : "#FF6384"}}>{row.isAttended? "Attended" : "Not Attend"}</TableCell>
-            </TableRow>
-          ))}
+
+        {guests}
+
         </TableBody>
       </Table>
     </TableContainer>

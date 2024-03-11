@@ -39,20 +39,18 @@ export default function SignUp() {
     const name = data.get("name");
     const email = data.get("email");
     setLoading(true);
+
     try {
-      // const response = await axios.post("/user?ID=12345", {
-      //   name: name,
-      //   email: email,
-      // });
-      // console.log(response);
+      const response = await axios.post("http://127.0.0.1:8000/api/guests", {
+        name: name,
+        email: email,
+        attendanceStatus: false,
+      });
+      console.log(response);
 
       // Flip the form
-
-      setTimeout(() => {
-        document.querySelector(`.${css.flip_card_inner}`).style.transform =
-          "rotateY(180deg)";
-      }, 3000);
-      
+      document.querySelector(`.${css.flip_card_inner}`).style.transform =
+        "rotateY(180deg)";
     } catch (error) {
       setLoading(false);
       setAlertMsg(error.message);

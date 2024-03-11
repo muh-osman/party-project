@@ -1,7 +1,7 @@
 //React router
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 // Pages & Components
-import { Home, Layout, About, SignUp, LogIn, Admin, AdminLayout, Scan, DashboardLayout, Dashboard, Statistics, ProtectedRoutes } from "./_index";
+import { Home, Layout, SignUp, LogIn, Admin, AdminLayout, Scan, DashboardLayout, Dashboard, Statistics, ProtectedRoutes, CreateAdmin } from "./_index";
 
 
 
@@ -11,11 +11,11 @@ export default function App() {
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
           <Route path="joinus" element={<SignUp />} />
           <Route path="login" element={<LogIn />} />
+          <Route path="create-admin" element={<CreateAdmin />} />
 
-          {/*  Protected Routes  */}
+          {/* Start Protected Routes  */}
           <Route element={< ProtectedRoutes />}>
             <Route path="admin" element={<AdminLayout />}>
               <Route index element={<Admin />} />
@@ -26,6 +26,7 @@ export default function App() {
               </Route>
             </Route>
           </Route>
+          {/* End Protected Routes  */}
       </Route>
     )
   );

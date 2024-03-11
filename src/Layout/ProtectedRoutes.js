@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-
-
+import { Outlet, Navigate } from "react-router-dom";
+// Cookies
+import { useCookies } from "react-cookie";
 
 export default function ProtectedRoutes() {
-  const [isAuth, setIsAuth] = useState(true);
-  const navigate = useNavigate();
+  const [cookies] = useCookies(["token"]);
 
-  useEffect(() => {
-    if (!isAuth) {
-      navigate("/login");
-    }
-  }, [isAuth, navigate]);
+  // console.log(cookies.token);
 
-  return <>{isAuth && <Outlet />}</>;
+  return cookies.token ? <Outlet /> : <Navigate to="/login" />;
 }
