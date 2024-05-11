@@ -14,7 +14,8 @@ class Guest extends Model
     protected $fillable = [
         "name",
         "email",
-        "attendanceStatus"
+        "attendanceStatus",
+        "qrCodeUrl",
     ];
 
     public function getCreatedAtAttribute($value)
@@ -26,5 +27,4 @@ class Guest extends Model
     {
         return Carbon::parse($value)->format('d/m/Y h:i A');
     }
-
 }

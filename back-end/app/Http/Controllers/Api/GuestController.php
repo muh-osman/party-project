@@ -7,6 +7,11 @@ use App\Models\Guest;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\File;
+
+use App\Mail\MailNotify;
+use Mail;
 
 class GuestController extends Controller
 {
@@ -30,13 +35,7 @@ class GuestController extends Controller
         ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -49,16 +48,35 @@ class GuestController extends Controller
             'email' => 'required|email',
             'attendanceStatus' => 'required|boolean',
         ]);
-    
+
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
 
+        // Generate QR code for the guest
+        $qrCode = QrCode::format('png')->size(256)->generate($request->email);
+
+        // Define the directory path
+        $directory = public_path('images' . DIRECTORY_SEPARATOR . 'qrcodes');
+        // Create the directory if it doesn't exist
+        if (!File::isDirectory($directory)) {
+            File::makeDirectory($directory, 0755, true, true);
+        }
+
+        // Save the QR code image to the directory
+        $qrCodePath = $directory . DIRECTORY_SEPARATOR . $request->email . '.png';
+        file_put_contents($qrCodePath, $qrCode);
+
+        // Store the guest details and QR code URL in the database
         $guest = Guest::create([
             'name' => $request->name,
             'email' => $request->email,
             'attendanceStatus' => $request->attendanceStatus,
+            'qrCodeUrl' => asset('images/qrcodes/' . $request->email . '.png'),
         ]);
+
+        // Send Email by qrcode
+        Mail::to($guest->email)->send(new MailNotify($guest->qrCodeUrl));
 
         return response()->json([
             'status' => 'success',
@@ -80,13 +98,6 @@ class GuestController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Guest $guest)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

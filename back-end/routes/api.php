@@ -3,8 +3,10 @@
 use App\Http\Controllers\Api\GuestController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\MailNotifyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,9 @@ Route::post('guests', [GuestController::class, 'store']);
 Route::post('user/login', [UserController::class, 'auth']);
 // Handles user registration
 Route::post('user/register', [UserController::class, 'store']);
+
+// Send email
+Route::post('user/send', [MailNotifyController::class, 'index']);
 
 
 
